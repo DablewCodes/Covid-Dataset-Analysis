@@ -1,41 +1,73 @@
 --Selection 
 
-select * from dataset.covid_vaccination order by 3, 4
+select * 
+from dataset.covid_vaccination 
+order by 3, 4
 
-select location, date, total_cases, new_cases, total_deaths, population from dataset.covid_deaths  order by location, date
+select location, date, total_cases, new_cases, total_deaths, population 
+from dataset.covid_deaths  
+order by location, date
 
 --Total Cases vs Total Deaths %
 
-select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 from dataset.covid_deaths order by location, date
+select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 
+from dataset.covid_deaths 
+order by location, date
 
 --Chances of a Fatal Covid Contraction in Pakistan
 
-select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as death_percentage from dataset.covid_deaths where location = 'Pakistan' order by location, date 
+select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as death_percentage 
+from dataset.covid_deaths 
+where location = 'Pakistan' 
+order by location, date 
 
 --Infection rate in Pakistan
 
-select location, date, total_cases, population, (total_cases/population)*100 as effected_population_percentage from dataset.covid_deaths where location = 'Pakistan' order by location, date 
+select location, date, total_cases, population, (total_cases/population)*100 as effected_population_percentage 
+from dataset.covid_deaths 
+where location = 'Pakistan' 
+order by location, date 
 
 --Countries with the highest infection rate with respect to population
 
-select location, population, max(total_cases) as max_cases, max((total_cases/population)*100) as effected_population_percentage from dataset.covid_deaths group by location, population order by effected_population_percentage desc
+select location, population, max(total_cases) as max_cases, max((total_cases/population)*100) as effected_population_percentage 
+from dataset.covid_deaths 
+group by location, population 
+order by effected_population_percentage desc
 
 --Countries with the most deaths
 
-select location, max(total_deaths) as death_count from groovy-bonus-381909.dataset.covid_deaths where continent is not null group by location order by death_count desc
+select location, max(total_deaths) as death_count 
+from groovy-bonus-381909.dataset.covid_deaths 
+where continent is not null 
+group by location 
+order by death_count desc
 
 --Continents with the most deaths
 
-select continent, max(total_deaths) as death_count from groovy-bonus-38109.dataset.covid_deaths where continent is not null group by continent order by death_count desc
+select continent, max(total_deaths) as death_count 
+from groovy-bonus-38109.dataset.covid_deaths 
+where continent is not null 
+group by continent 
+order by death_count desc
 
-select location, max(total_deaths) as death_count from groovy-bonus-381909.dataset.covid_deaths where continent is null group by location order by death_count desc
+select location, max(total_deaths) as death_count 
+from groovy-bonus-381909.dataset.covid_deaths 
+where continent is null 
+group by location 
+order by death_count desc
 
 --Global Death Rate
 
-select date, sum(new_cases) as case_count ,sum(new_deaths) as death_count, sum(new_deaths)/sum(new_cases)*100 as death_rate from groovy-bonus-381909.dataset.covid_deaths where continent is not null 
-group by date order by date
+select date, sum(new_cases) as case_count ,sum(new_deaths) as death_count, sum(new_deaths)/sum(new_cases)*100 as death_rate 
+from groovy-bonus-381909.dataset.covid_deaths 
+where continent is not null 
+group by date 
+order by date
 
-select sum(new_cases) as case_count ,sum(new_deaths) as death_count, sum(new_deaths)/sum(new_cases)*100 as death_rate from groovy-bonus-381909.dataset.covid_deaths where continent is not null
+select sum(new_cases) as case_count ,sum(new_deaths) as death_count, sum(new_deaths)/sum(new_cases)*100 as death_rate 
+from groovy-bonus-381909.dataset.covid_deaths 
+where continent is not null
 
 
 --Joining the death and vaccination tables
