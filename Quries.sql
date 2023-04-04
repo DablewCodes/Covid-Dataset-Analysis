@@ -69,7 +69,6 @@ select sum(new_cases) as case_count ,sum(new_deaths) as death_count, sum(new_dea
 from groovy-bonus-381909.dataset.covid_deaths 
 where continent is not null
 
-
 --Joining the death and vaccination tables
 
 Select * from groovy-bonus-381909.dataset.covid_vaccination cov_vac
@@ -78,7 +77,8 @@ on cov_vac.location = cov_dea.location and cov_vac.date = cov_dea.date
 
 --Total population vs vaccinated population
 
-Select cov_dea.continent, cov_dea.location, cov_dea.date, cov_dea.population, cov_vac.new_vaccinations from groovy-bonus-381909.dataset.covid_vaccination cov_vac
+Select cov_dea.continent, cov_dea.location, cov_dea.date, cov_dea.population, cov_vac.new_vaccinations 
+from groovy-bonus-381909.dataset.covid_vaccination cov_vac
 join groovy-bonus-381909.dataset.covid_deaths cov_dea
 on cov_vac.location = cov_dea.location and cov_vac.date = cov_dea.date
 where cov_dea.continent is not null
@@ -110,7 +110,7 @@ select *, vaccination_summation/population*100 as vaccinated_pop_percentage from
 --(Using View)
 
 create view dataset.popvsvac as (
-Select cov_dea.continent, cov_dea.location, cov_dea.date, cov_dea.population, cov_vac.new_vaccinations, 
+  Select cov_dea.continent, cov_dea.location, cov_dea.date, cov_dea.population, cov_vac.new_vaccinations, 
 sum(cov_vac.new_vaccinations) over (partition by cov_dea.location order by cov_dea.location, cov_dea.date) as vaccination_summation,
 from groovy-bonus-381909.dataset.covid_vaccination cov_vac
 join groovy-bonus-381909.dataset.covid_deaths cov_dea
@@ -119,4 +119,3 @@ where cov_dea.continent is not null
 order by 2,3)
 
 select *, vaccination_summation/population*100 as vaccinated_pop_percentage from dataset.popvsvac
-
