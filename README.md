@@ -2,6 +2,8 @@
 
 An exploratory data analysis and visualization done on the world wide recorded Covid-19 Dataset. 
 
+Practiced a wide range of SQL queries including Aggregate Functions, Joins, Window Functions, CTEs, and Views.
+
 Queries: https://github.com/DablewCodes/Covid-Dataset-Analysis/blob/main/Quries.sql
 
 Visualization: https://public.tableau.com/views/CovidAnalysis_16806876047600/Dashboard1
