@@ -9,23 +9,25 @@ Visualization: https://public.tableau.com/views/CovidAnalysis_16806876047600/Das
 This project was created by following this tutorial: https://www.youtube.com/watch?v=QILNlRvJlfQ&list=PLUaB-1hjhk8H48Pj32z4GZgGWyylqv85f&index=6
 
 Technologies used:
-  •BigQuery/SQL
+
+  • BigQuery/SQL
   
-  •Excel
+  • Excel
   
-  •Tablaeu
+  • Tablaeu
 
 Analysis Process:
-  •Download the dataset
+
+  • Download the dataset
   
-  •Split into vaccination and Death data
+  • Split into vaccination and Death data
   
-  •Import to BigQuery
+  • Import to BigQuery
   
-  •Analyze using SQL
+  • Analyze using SQL
   
-  •Save views in excel files
+  • Save views in excel files
   
-  •Import views to Tableau
+  • Import views to Tableau
   
-  •Create Visualization
+  • Create Visualization
