@@ -10,14 +10,22 @@ This project was created by following this tutorial: https://www.youtube.com/wat
 
 Technologies used:
   •BigQuery/SQL
+  
   •Excel
+  
   •Tablaeu
 
 Analysis Process:
   •Download the dataset
+  
   •Split into vaccination and Death data
+  
   •Import to BigQuery
+  
   •Analyze using SQL
+  
   •Save views in excel files
+  
   •Import views to Tableau
+  
   •Create Visualization
